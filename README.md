@@ -13,10 +13,34 @@ A modern, optimized Quality of Life plugin for Minecraft servers.
 - Clean and customizable messages
 
 ## 📌 Commands
-(see table above)
+| Command | Description |
+|------|-------------|
+| /qol | Show plugin help |
+| /spawn | Teleport to spawn |
+| /setspawn | Set spawn location |
+| /home [name] | Teleport to a home |
+| /sethome [name] | Set a home |
+| /delhome <name> | Delete a home |
+| /homes | Open homes GUI |
+| /tpa <player> | Send teleport request |
+| /tpaccept | Accept teleport request |
+| /tpdeny | Deny teleport request |
+| /tpamenu | Open TPA GUI |
+| /back | Return to last location |
+| /rtp | Random teleport |
+| /ping | Show ping |
 
 ## 🔐 Permissions
-(see list above)
+- spicyqol.setspawn
+- spicyqol.spawn
+- spicyqol.home
+- spicyqol.sethome
+- spicyqol.delhome
+- spicyqol.homes
+- spicyqol.tpa
+- spicyqol.back
+- spicyqol.rtp
+- spicyqol.ping
 
 ## ⚙️ Compatibility
 - Minecraft 1.21+
