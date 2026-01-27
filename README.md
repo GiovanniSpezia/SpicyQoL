@@ -31,3 +31,6 @@ A modern, optimized Quality of Life plugin for Minecraft servers.
 ## 🛠️ Build
 ```bash
 mvn clean package
+
+## 🧑‍💻 Autore
+**Spicy**  
