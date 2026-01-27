@@ -34,4 +34,4 @@ mvn clean package
 ```
 
 ## 🧑‍💻 Autore
-**Spicy**  
+**giospezia.it**  
