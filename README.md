@@ -29,6 +29,7 @@ A modern, optimized Quality of Life plugin for Minecraft servers.
 | /back | Return to last location |
 | /rtp | Random teleport |
 | /ping | Show ping |
+| /sit | Sit / stand toggle |
 
 ## 🔐 Permissions
 - spicyqol.setspawn
@@ -41,6 +42,7 @@ A modern, optimized Quality of Life plugin for Minecraft servers.
 - spicyqol.back
 - spicyqol.rtp
 - spicyqol.ping
+- spicyqol.sit
 
 ## ⚙️ Compatibility
 - Minecraft 1.21+
