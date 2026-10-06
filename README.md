@@ -8,8 +8,10 @@ A modern, optimized Quality of Life plugin for Minecraft servers.
 - /back system (death & teleport safe)
 - Random teleport (/rtp)
 - Player menu and sidebar scoreboard
-- Fixed menu compass in hotbar slot 9
+- Fixed menu compass in hotbar slot 9 (right-click to open)
+- Team prefix and colors in player chat and nametags, plus a styled tab header/footer
 - 20-minute random teleport cooldown
+- Day/night requests decided by a majority vote when multiple players are online
 - Spawn management
 - Ping command
 - Optimized autosave system
@@ -30,10 +32,13 @@ A modern, optimized Quality of Life plugin for Minecraft servers.
 | /tpdeny | Deny teleport request |
 | /tpamenu | Open TPA GUI |
 | /back | Return to last location |
-| /rtp | Random teleport |
+| /rtp | Open random teleport menu |
 | /ping | Show ping |
 | /sit | Sit / stand toggle |
 | /qolmenu | Open the player menu |
+| /day | Propose a vote to set daytime |
+| /night | Propose a vote to set nighttime |
+| /timevote si\|no | Vote on the active time request |
 
 ## 🔐 Permissions
 - spicyqol.setspawn
@@ -46,6 +51,7 @@ A modern, optimized Quality of Life plugin for Minecraft servers.
 - spicyqol.back
 - spicyqol.rtp
 - spicyqol.rtp.bypass (bypass the RTP cooldown; operators by default)
+- spicyqol.timevote
 - spicyqol.ping
 - spicyqol.sit
 
