@@ -1,0 +1,108 @@
+name: SpicyQoL
+version: 1.3.0
+main: it.giospezia.spicyqol.SpicyQoL
+api-version: "1.20"
+author: Spicy
+
+commands:
+  qol:
+    description: Help SpicyQoL
+    aliases: [spicyqol, spicyqolhelp, qolhelp]
+
+  spawn:
+    description: Teleport allo spawn
+
+  setspawn:
+    description: Imposta lo spawn
+
+  home:
+    description: Teleport a una home
+
+  sethome:
+    description: Imposta una home
+
+  delhome:
+    description: Elimina una home
+
+  homes:
+    description: Apre la GUI delle home
+
+  tpa:
+    description: Richiesta di teleport
+
+  tpaccept:
+    description: Accetta richiesta di teleport
+
+  tpdeny:
+    description: Rifiuta richiesta di teleport
+
+  tpamenu:
+    description: Apre la GUI TPA (accetta / rifiuta)
+
+  back:
+    description: Torna all'ultima posizione
+
+  rtp:
+    description: Teleporto random
+
+  ping:
+    description: Mostra il ping
+
+  sit:
+    description: Siediti
+
+  qolmenu:
+    description: Apre il menu giocatore SpicyQoL
+    aliases: [qmenu, spicymenu]
+
+  day:
+    description: Propone una votazione per impostare il giorno
+
+  night:
+    description: Propone una votazione per impostare la notte
+
+  timevote:
+    description: Vota per la richiesta giorno/notte attiva
+
+permissions:
+  spicyqol.setspawn:
+    default: op
+
+  spicyqol.spawn:
+    default: true
+
+  spicyqol.home:
+    default: true
+
+  spicyqol.sethome:
+    default: true
+
+  spicyqol.delhome:
+    default: true
+
+  spicyqol.homes:
+    default: true
+
+  spicyqol.tpa:
+    default: true
+
+  spicyqol.back:
+    default: true
+
+  spicyqol.rtp:
+    default: true
+
+  spicyqol.rtp.bypass:
+    default: op
+
+  spicyqol.timevote:
+    default: true
+
+  spicyqol.ping:
+    default: true
+
+  spicyqol.sit:
+    default: true
+
+  spicyqol.lay:
+    default: true
