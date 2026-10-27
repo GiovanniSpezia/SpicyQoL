@@ -4,6 +4,7 @@ import it.giospezia.spicyqol.gui.GuiKeys;
 import it.giospezia.spicyqol.gui.MenuGui;
 import it.giospezia.spicyqol.commands.RtpCommand;
 import it.giospezia.spicyqol.SpicyQoL;
+import it.giospezia.spicyqol.utils.Lang;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -53,6 +54,7 @@ public class HotbarMenuListener implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         if (!(event.getWhoClicked() instanceof Player player)) return;
+        if (!isMenuItemEnabled()) return; // slot 9 is a normal slot when the menu item is disabled
         if (isMenuItem(event.getCurrentItem()) || isMenuItem(event.getCursor()) || event.getHotbarButton() == MENU_SLOT) {
             event.setCancelled(true);
             return;
@@ -64,6 +66,7 @@ public class HotbarMenuListener implements Listener {
 
     @EventHandler
     public void onInventoryDrag(InventoryDragEvent event) {
+        if (!isMenuItemEnabled()) return;
         int menuRawSlot = event.getView().getTopInventory().getSize() + 27 + MENU_SLOT;
         if (isMenuItem(event.getOldCursor()) || event.getRawSlots().contains(menuRawSlot)) {
             event.setCancelled(true);
@@ -86,9 +89,16 @@ public class HotbarMenuListener implements Listener {
     }
 
     private void ensureMenuItem(Player player) {
+        if (!isMenuItemEnabled()) {
+            removeMenuItems(player);
+            return;
+        }
         PlayerInventory inventory = player.getInventory();
         ItemStack current = inventory.getItem(MENU_SLOT);
-        if (isMenuItem(current)) return;
+        if (isMenuItem(current)) {
+            refreshMenuItemText(current);
+            return;
+        }
 
         int existingMenuSlot = -1;
         ItemStack[] contents = inventory.getStorageContents();
@@ -100,6 +110,7 @@ public class HotbarMenuListener implements Listener {
         }
 
         if (existingMenuSlot >= 0) {
+            refreshMenuItemText(contents[existingMenuSlot]);
             inventory.setItem(existingMenuSlot, current == null || current.getType().isAir() ? null : current);
         } else if (current != null && !current.getType().isAir()) {
             int emptyStorageSlot = -1;
@@ -111,7 +122,7 @@ public class HotbarMenuListener implements Listener {
                 }
             }
             if (emptyStorageSlot < 0) {
-                player.sendMessage("§eLibera uno slot nell'inventario per ricevere la bussola del menu.");
+                player.sendMessage(Lang.t("§eLibera uno slot nell'inventario per ricevere la bussola del menu."));
                 return;
             }
             inventory.setItem(emptyStorageSlot, current);
@@ -119,14 +130,36 @@ public class HotbarMenuListener implements Listener {
         inventory.setItem(MENU_SLOT, createMenuItem());
     }
 
+    // Whether the hotbar menu compass is enabled in the config.
+    private boolean isMenuItemEnabled() {
+        return SpicyQoL.get().getConfig().getBoolean("menu-item.enabled", true);
+    }
+
+    // Removes any menu compass from the player's inventory (used when the
+    // menu-item feature is disabled in the config).
+    private void removeMenuItems(Player player) {
+        PlayerInventory inventory = player.getInventory();
+        for (int slot = 0; slot < inventory.getSize(); slot++) {
+            if (isMenuItem(inventory.getItem(slot))) inventory.setItem(slot, null);
+        }
+    }
+
     private ItemStack createMenuItem() {
         ItemStack item = new ItemStack(Material.COMPASS);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName("§6§lMenu giocatore");
-        meta.setLore(java.util.List.of("§7Tasto destro per aprire le funzioni"));
         meta.getPersistentDataContainer().set(GuiKeys.MENU_ITEM(), PersistentDataType.BYTE, (byte) 1);
         item.setItemMeta(meta);
+        refreshMenuItemText(item);
         return item;
+    }
+
+    // Re-applies the localized name/lore to an existing menu item, so items
+    // created before a language change get updated too.
+    private void refreshMenuItemText(ItemStack item) {
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(Lang.t("§6§lMenu giocatore"));
+        meta.setLore(java.util.List.of(Lang.t("§7Tasto destro per aprire le funzioni")));
+        item.setItemMeta(meta);
     }
 
     private boolean isMenuItem(ItemStack item) {

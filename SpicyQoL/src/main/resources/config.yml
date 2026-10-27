@@ -1,10 +1,19 @@
 prefix: "&6&lSpicy&fQoL &8» &f"
 
+# Lingua dei messaggi: "it" per l'italiano originale, "zh_CN" per il cinese simplificato
+# 消息语言："it" 为原版意大利语，"zh_CN" 为简体中文
+language: "zh_CN"
+
 spawn:
   teleport-sound: true
 
 homes:
   max-homes: 3
+
+# Compass del menu nella barra rapida (slot 9): false per disabilitarlo
+# 快捷栏第9格的菜单指南针：设为 false 可关闭
+menu-item:
+  enabled: true
 
 tpa:
   timeout-seconds: 60

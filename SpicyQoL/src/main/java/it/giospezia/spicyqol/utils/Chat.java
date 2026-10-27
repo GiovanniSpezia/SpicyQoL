@@ -12,7 +12,7 @@ public class Chat {
     }
 
     public static String c(String s) {
-        return ChatColor.translateAlternateColorCodes('&', s);
+        return ChatColor.translateAlternateColorCodes('&', Lang.t(s));
     }
 
     public static void send(CommandSender sender, String msg) {

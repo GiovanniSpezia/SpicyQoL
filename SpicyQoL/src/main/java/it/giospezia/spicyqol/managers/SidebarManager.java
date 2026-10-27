@@ -2,6 +2,7 @@ package it.giospezia.spicyqol.managers;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import it.giospezia.spicyqol.utils.Lang;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -92,12 +93,12 @@ public class SidebarManager implements Listener {
 
         Team roleTeam = previousBoards.get(player.getUniqueId()) == null ? null
                 : previousBoards.get(player.getUniqueId()).getEntryTeam(player.getName());
-        String role = roleTeam == null ? "Utente"
+        String role = roleTeam == null ? Lang.t("Utente")
                 : org.bukkit.ChatColor.stripColor(color(roleTeam.getDisplayName()));
         if (role == null || role.trim().isEmpty()) {
-            role = roleTeam == null ? "Utente" : org.bukkit.ChatColor.stripColor(color(roleTeam.getPrefix()));
+            role = roleTeam == null ? Lang.t("Utente") : org.bukkit.ChatColor.stripColor(color(roleTeam.getPrefix()));
         }
-        if (role == null || role.trim().isEmpty()) role = roleTeam == null ? "Utente" : roleTeam.getName();
+        if (role == null || role.trim().isEmpty()) role = roleTeam == null ? Lang.t("Utente") : roleTeam.getName();
         role = trim(role.trim(), 18);
 
         if (roleTeam == null) {
@@ -108,11 +109,12 @@ public class SidebarManager implements Listener {
             teamChatNames.put(player.getUniqueId(), teamRolePrefix(roleTeam) + colorCode + player.getName() + roleTeam.getSuffix());
         }
 
-        String tabRole = roleTeam == null ? color("&7Utente")
+        String tabRole = roleTeam == null ? color(Lang.t("&7Utente"))
                 : teamRolePrefix(roleTeam) + roleTeam.getSuffix();
         player.setPlayerListHeaderFooter(
-                color("&6&l✦ SPICY&f&lQOL\n&7Benvenuto, " + player.getName()),
-                color("&7Giocatori online: &f" + Bukkit.getOnlinePlayers().size() + "\n&7Ruolo: ")
+                color(Lang.t("&6&l✦ SPICY&f&lQOL\n&7Benvenuto, ")) + player.getName(),
+                color(Lang.t("&7Giocatori online: &f")) + Bukkit.getOnlinePlayers().size()
+                        + color(Lang.t("\n&7Ruolo: "))
                         + tabRole + color("\n&e/qolmenu &8• &e/rtp")
         );
 
@@ -120,13 +122,13 @@ public class SidebarManager implements Listener {
         String[] lines = {
                 color("&7" + LocalDate.now().format(DATE)),
                 color("&f" + trim(player.getName(), 22)),
-                color("&7Ruolo: &f" + role),
-                color("&6&l◆ &ePROFILO"),
-                color("&7Mondo: &f" + world),
-                color("&7Pos: &f" + player.getLocation().getBlockX() + "," + player.getLocation().getBlockY() + "," + player.getLocation().getBlockZ()),
-                color("&7Livello: &f" + player.getLevel()),
-                color("&7Online: &f" + Bukkit.getOnlinePlayers().size()),
-                color("&7Ping: &f" + player.getPing() + " ms"),
+                color(Lang.t("&7Ruolo: &f") + role),
+                color(Lang.t("&6&l◆ &ePROFILO")),
+                color(Lang.t("&7Mondo: &f") + world),
+                color(Lang.t("&7Pos: &f") + player.getLocation().getBlockX() + "," + player.getLocation().getBlockY() + "," + player.getLocation().getBlockZ()),
+                color(Lang.t("&7Livello: &f") + player.getLevel()),
+                color(Lang.t("&7Online: &f") + Bukkit.getOnlinePlayers().size()),
+                color(Lang.t("&7Ping: &f") + player.getPing() + " ms"),
                 color("&e/spicyqol")
         };
 

@@ -1,5 +1,6 @@
 package it.giospezia.spicyqol.sit;
 
+import it.giospezia.spicyqol.utils.Lang;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -32,7 +33,7 @@ public class SitManager {
 
         Location base = safeBase(p);
         if (base == null) {
-            p.sendMessage("§cNon puoi sederti qui.");
+            p.sendMessage(Lang.t("§cNon puoi sederti qui."));
             return;
         }
 

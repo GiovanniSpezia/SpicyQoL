@@ -10,6 +10,7 @@ import it.giospezia.spicyqol.sit.SitCommand;
 import it.giospezia.spicyqol.sit.SitListener;
 import it.giospezia.spicyqol.sit.SitManager;
 import it.giospezia.spicyqol.utils.Chat;
+import it.giospezia.spicyqol.utils.Lang;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class SpicyQoL extends JavaPlugin {
@@ -37,6 +38,7 @@ public class SpicyQoL extends JavaPlugin {
         instance = this;
 
         saveDefaultConfig();
+        Lang.init(this);
         Chat.init(this);
 
         // Managers

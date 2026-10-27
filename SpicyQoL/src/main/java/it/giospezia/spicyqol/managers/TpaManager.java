@@ -1,6 +1,7 @@
 package it.giospezia.spicyqol.managers;
 
 import it.giospezia.spicyqol.utils.Chat;
+import it.giospezia.spicyqol.utils.Lang;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -43,34 +44,34 @@ public class TpaManager {
         Chat.send(to, "&e" + from.getName() + " &7vuole teletrasportarsi da te.");
 
         // Chat buttons (Spigot - Bungee components)
-        TextComponent base = new TextComponent("Clicca: ");
+        TextComponent base = new TextComponent(Lang.t("Clicca: "));
         base.setColor(ChatColor.GRAY);
 
-        TextComponent accept = new TextComponent("[ACCETTA]");
+        TextComponent accept = new TextComponent(Lang.t("[ACCETTA]"));
         accept.setColor(ChatColor.GREEN);
         accept.setBold(true);
         accept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpaccept"));
         accept.setHoverEvent(new HoverEvent(
                 HoverEvent.Action.SHOW_TEXT,
-                new ComponentBuilder("Accetta la richiesta").color(ChatColor.GREEN).create()
+                new ComponentBuilder(Lang.t("Accetta la richiesta")).color(ChatColor.GREEN).create()
         ));
 
-        TextComponent deny = new TextComponent("[RIFIUTA]");
+        TextComponent deny = new TextComponent(Lang.t("[RIFIUTA]"));
         deny.setColor(ChatColor.RED);
         deny.setBold(true);
         deny.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpdeny"));
         deny.setHoverEvent(new HoverEvent(
                 HoverEvent.Action.SHOW_TEXT,
-                new ComponentBuilder("Rifiuta la richiesta").color(ChatColor.RED).create()
+                new ComponentBuilder(Lang.t("Rifiuta la richiesta")).color(ChatColor.RED).create()
         ));
 
-        TextComponent gui = new TextComponent("[APRI GUI]");
+        TextComponent gui = new TextComponent(Lang.t("[APRI GUI]"));
         gui.setColor(ChatColor.YELLOW);
         gui.setBold(true);
         gui.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpamenu"));
         gui.setHoverEvent(new HoverEvent(
                 HoverEvent.Action.SHOW_TEXT,
-                new ComponentBuilder("Apri il menu con ACCETTA/RIFIUTA").color(ChatColor.YELLOW).create()
+                new ComponentBuilder(Lang.t("Apri il menu con ACCETTA/RIFIUTA")).color(ChatColor.YELLOW).create()
         ));
 
         TextComponent space = new TextComponent(" ");
